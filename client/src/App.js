@@ -2,6 +2,9 @@
 import './App.css';
 import {BrowserRouter, Route, Routes}from 'react-router-dom'
 import Books from './pages/Books';
+import Update from './pages/Update';
+import Add from './pages/Add';
+import "./style.css"
 
 function App() {
   return (
@@ -9,6 +12,8 @@ function App() {
        <BrowserRouter>
           <Routes>
             <Route path='/books' element={<Books/>}/>
+            <Route path='/add' element={<Add/>}/>
+            <Route path='/update' element={<Update/>}/>
           </Routes>
        </BrowserRouter>
     </div>
