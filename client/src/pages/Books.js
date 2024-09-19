@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 
+
 const Books = () => {
   const [books,setBooks] = useState([])
 
@@ -24,15 +25,20 @@ const Books = () => {
   return (
     <div>
       <h1>Sadesh Book Shop</h1>
+      <div className='books'>
        {books.map((book)=>(
         <div className='book' key={book.id}>
           {book.cover_pic && <img src={book.cover} alt=''/>} 
           <h2>{book.title}</h2>
           <p>{book.desc}</p>
           <span>{book.price}</span>
+          <button className='delete'>DELETE</button>
+          <button className='update'>UPDATE</button>
         </div>
        ))}
+       </div>
        <button><Link to ='/add'>ADD NEW BOOK</Link></button>
+    
     </div>
   )
 }

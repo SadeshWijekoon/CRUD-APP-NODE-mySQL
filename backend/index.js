@@ -41,6 +41,17 @@ app.post('/books',(req,res)=>{
         }
     })
 })
+app.delete("/books/:id",(req,res)=>{
+    const bookId = req.params.id;
+    const q = "DELETE FROM books WHERE id = ?"
+    db.query(q,bookId,(err,data)=>{
+        if(err){
+            return res.json(err)
+        }else{
+            return res.json("Book has been delected successfully")
+        }
+    })
+})
 
 app.listen(5000,()=>{
     console.log("backend is connected");
