@@ -53,6 +53,27 @@ app.delete("/books/:id",(req,res)=>{
     })
 })
 
+app.put('/books/:id', (req, res) => {
+    const { title, desc, cover_pic, price } = req.body;
+    const bookId = req.params.id;
+
+    // Corrected SQL query with backticks around reserved keywords
+    const q = "UPDATE books SET title = ?, `desc` = ?, price = ?, cover_pic = ? WHERE id = ?";
+
+    const values = [title, desc, cover_pic, price, bookId];
+
+    db.query(q, values, (err, data) => {
+        if (err) {
+            console.error(err); // Log the error for debugging
+            res.status(500).json({ error: 'Error updating book' });
+        } else {
+            res.json({ message: "Book has been updated" });
+        }
+    });
+});
+
+
+
 app.listen(5000,()=>{
     console.log("backend is connected");
 })
